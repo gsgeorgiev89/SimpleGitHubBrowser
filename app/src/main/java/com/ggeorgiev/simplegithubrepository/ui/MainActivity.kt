@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         etToken = findViewById(R.id.etToken)
+
     }
 
     fun onClick(view: View?) {
