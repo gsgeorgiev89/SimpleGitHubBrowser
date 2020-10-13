@@ -12,4 +12,5 @@ class User(var login : String,
            var followers : Int,
            var following : Int,
            var company : String?,
-           var repos : ArrayList<Repository>?) : Parcelable
+           var repos : ArrayList<Repository>?,
+           var starred : ArrayList<Repository>?) : Parcelable

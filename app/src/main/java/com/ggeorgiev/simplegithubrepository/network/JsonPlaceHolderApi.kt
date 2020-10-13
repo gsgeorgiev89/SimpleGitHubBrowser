@@ -18,6 +18,9 @@ interface JsonPlaceHolderApi {
     @GET("users/{userName}/repos")
     fun getRepositories(@Path("userName") username : String): Observable<ArrayList<Repository>>
 
+    @GET("users/{userName}/starred")
+    fun getStarredRepositories(@Path("userName") username : String): Observable<ArrayList<Repository>>
+
     @GET("search/users")
     fun getUsers(@Query("q") username : String) : Observable<UserList>
 

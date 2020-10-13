@@ -10,22 +10,22 @@ import com.ggeorgiev.simplegithubrepository.data.Repository
 import com.ggeorgiev.simplegithubrepository.data.User
 import kotlinx.android.synthetic.main.repository_row.view.*
 
-class RepositoryAdapter(val user: User, val context: Context) : RecyclerView.Adapter<RepositoryAdapter.ViewHolder>() {
+class StarredAdapter (val user: User, val context: Context) : RecyclerView.Adapter<StarredAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(context).inflate(R.layout.repository_row, parent, false)
-        return RepositoryAdapter.ViewHolder(view)
+        return StarredAdapter.ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindingValues(user.repos!!.get(position))
+        holder.bindingValues(user.starred!!.get(position))
     }
 
     override fun getItemCount(): Int {
-        if(user.repos == null){
+        if(user.starred == null){
             return 0
         }
-        return user.repos!!.size
+        return user.starred!!.size
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
