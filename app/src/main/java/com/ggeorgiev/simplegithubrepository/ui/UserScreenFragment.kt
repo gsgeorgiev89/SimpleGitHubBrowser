@@ -47,4 +47,6 @@ class UserScreenFragment : Fragment() {
 
         return view
     }
+
+
 }

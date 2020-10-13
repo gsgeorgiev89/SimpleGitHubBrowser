@@ -22,27 +22,27 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var jsonPlaceHolderApi: JsonPlaceHolderApi
-
     lateinit var etToken: EditText
+
+
+    val mNetworkComponent by lazy {
+        NetworkComponent.create()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         etToken = findViewById(R.id.etToken)
-        etToken.setText("bd95113083ed706709a2284156ea9f406409cad9")
 
     }
 
     fun onClick(view: View?) {
-        val networkComponent = NetworkComponent()
-        jsonPlaceHolderApi = networkComponent.getRetrofit().create(JsonPlaceHolderApi::class.java)
 
         login()
     }
 
     private fun login() {
-        var call = jsonPlaceHolderApi.Login("Bearer " + etToken.text)
+        var call = mNetworkComponent.Login("Bearer " + etToken.text)
 
         call.enqueue(object : Callback<User> {
             override fun onFailure(call: Call<User>, t: Throwable) {
@@ -51,14 +51,18 @@ class MainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (!response.isSuccessful) {
-                    Toast.makeText(baseContext, "CODE: " + response.code(), Toast.LENGTH_LONG)
+                    Toast.makeText(
+                        baseContext,
+                        "CODE: " + response.code() + " " + response.message(),
+                        Toast.LENGTH_LONG
+                    )
                         .show()
                     return
                 } else {
                     val user = response.body()
                     if (user != null) {
                         val intent = Intent(baseContext, AccInfoActivity::class.java)
-                        intent.putExtra("USER_OBJ",  user)
+                        intent.putExtra("USER_OBJ", user)
                         startActivity(intent)
                     }
                 }
