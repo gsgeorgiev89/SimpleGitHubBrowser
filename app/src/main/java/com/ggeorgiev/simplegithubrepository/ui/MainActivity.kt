@@ -2,42 +2,34 @@ package com.ggeorgiev.simplegithubrepository.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ggeorgiev.simplegithubrepository.R
 import com.ggeorgiev.simplegithubrepository.data.User
-import com.ggeorgiev.simplegithubrepository.network.JsonPlaceHolderApi
 import com.ggeorgiev.simplegithubrepository.network.NetworkComponent
-import com.google.gson.GsonBuilder
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 
 class MainActivity : AppCompatActivity() {
     lateinit var etToken: EditText
 
-
     val mNetworkComponent by lazy {
         NetworkComponent.create()
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        etToken = findViewById(R.id.etToken)
-
+        etToken = findViewById(R.id.loginToken)
+        etToken.setText("a1c4450bcea69b046a4b76a297d6bca0801f9f47")
     }
 
     fun onClick(view: View?) {
-
         login()
     }
 

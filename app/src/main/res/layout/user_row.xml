@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/imgSearchUserAvatar"
+        android:id="@+id/userRowAvatar"
         android:layout_width="30dp"
         android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,12 +17,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvName"
+        android:id="@+id/userRowName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="no Name"
         android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgSearchUserAvatar"
+        app:layout_constraintStart_toEndOf="@+id/userRowAvatar"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

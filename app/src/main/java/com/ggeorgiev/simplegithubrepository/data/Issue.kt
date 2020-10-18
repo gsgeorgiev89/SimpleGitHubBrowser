@@ -4,4 +4,4 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class SimpleUser(var login : String, var avatar_url : String):Parcelable
+class Issue (var title : String, var state : String, var created_at : String): Parcelable

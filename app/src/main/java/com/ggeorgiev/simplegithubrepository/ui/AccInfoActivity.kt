@@ -10,7 +10,8 @@ import com.ggeorgiev.simplegithubrepository.R
 import com.ggeorgiev.simplegithubrepository.data.User
 
 class AccInfoActivity : AppCompatActivity() {
-    lateinit var user : User
+    lateinit var user: User
+    lateinit var searchView: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,29 +24,31 @@ class AccInfoActivity : AppCompatActivity() {
         f.arguments = bundle
         selectFragment(f)
 
-        val sv = findViewById<SearchView>(R.id.searchView)
-        sv.setOnCloseListener {
+        searchView = findViewById(R.id.accountInfoSearchView)
+        searchView.setOnCloseListener {
             val f = UserScreenFragment();
             val bundle = Bundle()
             bundle.putParcelable("USER_OBJ", user)
+
             f.arguments = bundle
 
             selectFragment(f)
             false
         }
 
-        sv.setOnSearchClickListener {
+        searchView.setOnSearchClickListener {
 
         }
 
-        sv.setOnClickListener {
+        searchView.setOnClickListener {
         }
 
-        sv.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextChange(qString: String): Boolean {
                 return true
             }
+
             override fun onQueryTextSubmit(qString: String): Boolean {
 
                 val f = SearchFragment()
@@ -59,11 +62,10 @@ class AccInfoActivity : AppCompatActivity() {
     }
 
 
-
     fun selectFragment(f: Fragment) {
         val manager: FragmentManager = supportFragmentManager
         val transaction: FragmentTransaction = manager.beginTransaction()
-        transaction.replace(R.id.fragment, f).addToBackStack(null)
+        transaction.replace(R.id.AccountInfoFragment, f).addToBackStack(null)
         transaction.commit()
     }
 }

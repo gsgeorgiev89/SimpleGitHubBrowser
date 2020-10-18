@@ -4,4 +4,4 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class SimpleUser(var login : String, var avatar_url : String):Parcelable
+class Branch (var name : String , var protectedStatus : Boolean) : Parcelable

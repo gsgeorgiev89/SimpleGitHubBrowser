@@ -19,12 +19,12 @@ class StarredReposViewModel(application: Application) : AndroidViewModel(applica
     fun getStarredRepositories(name : String) : MutableLiveData<ArrayList<Repository>> {
         if (reposList == null){
             reposList = MutableLiveData()
-            fetchStarredRepositories(name);
+            fetchRepositories(name);
         }
         return reposList as MutableLiveData<ArrayList<Repository>>
     }
 
-    private fun fetchStarredRepositories(name : String) {
+    private fun fetchRepositories(name : String) {
         mNetworkComponent.getStarredRepositories(name)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())

@@ -9,14 +9,14 @@ import com.ggeorgiev.simplegithubrepository.network.NetworkComponent
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class RepositoriesViewModel(application: Application) : AndroidViewModel(application){
+class OwnedRepositoriesViewModel(application: Application) : AndroidViewModel(application){
 
     var reposList: MutableLiveData<ArrayList<Repository>>? = null
 
     val mNetworkComponent by lazy {
         NetworkComponent.create();
     }
-    fun getRepositories(name : String) : MutableLiveData<ArrayList<Repository>> {
+    fun getOwnedRepositories(name : String) : MutableLiveData<ArrayList<Repository>> {
         if (reposList == null){
             reposList = MutableLiveData()
             fetchRepositories(name);
@@ -25,7 +25,7 @@ class RepositoriesViewModel(application: Application) : AndroidViewModel(applica
     }
 
     private fun fetchRepositories(name : String) {
-        mNetworkComponent.getRepositories(name)
+        mNetworkComponent.getOwnedRepositories(name)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe({ it ->

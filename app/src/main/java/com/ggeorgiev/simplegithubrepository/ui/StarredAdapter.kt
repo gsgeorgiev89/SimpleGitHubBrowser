@@ -10,11 +10,11 @@ import com.ggeorgiev.simplegithubrepository.data.Repository
 import com.ggeorgiev.simplegithubrepository.data.User
 import kotlinx.android.synthetic.main.repository_row.view.*
 
-class StarredAdapter (val user: User, val context: Context) : RecyclerView.Adapter<StarredAdapter.ViewHolder>() {
+class StarredAdapter (val user: User, val listner : RepositoryAdapter.OnItemClickListener) : RecyclerView.Adapter<StarredAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view: View = LayoutInflater.from(context).inflate(R.layout.repository_row, parent, false)
-        return StarredAdapter.ViewHolder(view)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.repository_row, parent, false)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -28,9 +28,19 @@ class StarredAdapter (val user: User, val context: Context) : RecyclerView.Adapt
         return user.starred!!.size
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) , View.OnClickListener{
         fun bindingValues(get: Repository) {
-            itemView.tvRepositoryName.text = get.name
+            itemView.repositoryRowName.text = get.name
+        }
+
+        init{
+            itemView.setOnClickListener (this)
+        }
+
+        override fun onClick(p0: View?) {
+            val pos = adapterPosition
+            if(pos != RecyclerView.NO_POSITION)
+                listner.onItemClick(user.starred!![pos])
         }
     }
 }

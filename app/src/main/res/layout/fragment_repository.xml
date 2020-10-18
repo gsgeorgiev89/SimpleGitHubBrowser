@@ -3,12 +3,190 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.RepositoryFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.RepositoryFragment"
+    android:layout_margin="10dp">
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/repositoryName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Repository"
+        style="@android:style/TextAppearance.DeviceDefault.Large"
+        android:background="@drawable/myborder"/>
+
+        <TextView
+            android:id="@+id/repositoryCommitsText"
+            android:text="Commits:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/repositoryCommits"
+            android:text="N/A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryName"
+            app:layout_constraintStart_toEndOf="@+id/repositoryCommitsText"
+            android:paddingEnd="20dp"
+            />
+
+        <TextView
+            android:id="@+id/repositoryStarText"
+            android:text="Star:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryName"
+            app:layout_constraintStart_toEndOf="@+id/repositoryCommits"
+            />
+
+        <TextView
+            android:id="@+id/repositoryStar"
+            android:text="N/A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryName"
+            app:layout_constraintStart_toEndOf="@+id/repositoryStarText"
+            android:paddingEnd="10dp"
+            />
+
+        <TextView
+            android:id="@+id/repositoryBranchesText"
+            android:text="Branches:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryCommitsText"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/repositoryBranches"
+            android:text="N/A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryCommitsText"
+            app:layout_constraintStart_toEndOf="@+id/repositoryBranchesText"
+            android:paddingEnd="20dp"
+            />
+
+        <TextView
+            android:id="@+id/repositoryForkText"
+            android:text="Fork:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryStarText"
+            app:layout_constraintStart_toStartOf="@id/repositoryStarText"
+            />
+
+        <TextView
+            android:id="@+id/repositoryFork"
+            android:text="N/A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryStarText"
+            app:layout_constraintStart_toEndOf="@id/repositoryForkText"
+            android:paddingEnd="20dp"
+            />
+
+        <TextView
+            android:id="@+id/repositoryReleaseText"
+            android:text="Releases:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryForkText"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/repositoryRelease"
+            android:text="N/A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryForkText"
+            app:layout_constraintStart_toEndOf="@id/repositoryReleaseText"
+            android:paddingEnd="20dp"
+            />
+
+        <TextView
+            android:id="@+id/repositoryContributorsText"
+            android:text="Contributors:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryForkText"
+            app:layout_constraintStart_toStartOf="@id/repositoryForkText"
+            />
+
+        <TextView
+            android:id="@+id/repositoryContributors"
+            android:text="N/A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryForkText"
+            app:layout_constraintStart_toEndOf="@id/repositoryContributorsText"
+            android:paddingEnd="20dp"
+            />
+
+        <TextView
+            android:id="@+id/repositoryLanguagesText"
+            android:text="Languages:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/repositoryStar"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryName"/>
+
+        <TextView
+            android:id="@+id/repositoryLanguages"
+            android:text="N/A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryLanguagesText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/repositoryStar"/>
+
+        <RadioGroup
+            android:id="@+id/repositoryIssueTypes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryContributorsText"
+            app:layout_constraintStart_toStartOf="parent"
+            android:gravity="center">
+
+            <RadioButton
+                android:id="@+id/repositoryAll"
+                android:text="All"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"/>
+            <RadioButton
+                android:id="@+id/repositoryOpened"
+                android:text="Opened"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <RadioButton
+                android:id="@+id/repositoryClosed"
+                android:text="Closed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </RadioGroup>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/repositoryIssuesList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryIssueTypes"
+            app:layout_constraintStart_toStartOf="parent"/>
+        
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
